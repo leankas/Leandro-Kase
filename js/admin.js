@@ -87,3 +87,40 @@ users.forEach((user) => {
                               </tr>`
 
 })
+
+function renderUsers(arrayUsers) {
+  //Cada vez que llamamos la funcion renderUsers limpiamos el body de la tabla y volvemos a pintar
+  tableBodyHTML.innerHTML = "";
+
+ arrayUsers.forEach((user) => {
+
+    tableBodyHTML.innerHTML += `<tr>
+                              <td class="user-image">
+                              <img src="${user.image}" alt="${user.fullname} avatar">
+                              </td>
+                              <td class="user-name">${user.fullname}</td>
+                              <td class="user-email">${user.email}</td>
+                              <td class="user-location">${user.localidad}</td>
+                              <td class="user-actions"></td>
+                              </tr>`
+  })
+}
+renderUsers(users)
+
+function inputSearch(evt) {
+// Tenemos que tomar lo uqe la persona ha escrito en el input
+console.log(evt.target.value)
+const search = evt.target.value.toLocaleLowerCase();
+//Luego deberiamos recorrer el array y filtrar por todos aquellos usuarios cuyo nombre coincida con la busqueda
+// Deberiamos pintar nuevamente la tabla con los resultados de la busqueda
+const filteredUsers = users.filter((usr) => {
+// Filter para devolver un usuario yo tengo que asegurarme de retornar un true bajo cierta condicion
+if(usr.fullname.toLocaleLowerCase().includes(search)){
+  return true ;
+  } return false;
+
+})
+renderUsers(filteredUsers)
+
+
+}
