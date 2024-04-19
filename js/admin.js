@@ -121,6 +121,33 @@ if(usr.fullname.toLocaleLowerCase().includes(search)){
 
 })
 renderUsers(filteredUsers)
+}
 
 
+function sortAsc() {
+  const collator = new Intl.Collator(undefined, { sensitivty: 'base' })
+
+  users.sort((a, b) => {
+    return collator.compare(a.fullname, b.fullname)
+  })
+  renderUsers(users)
+}
+
+function sortDesc () {
+//#Metodo 2 metodo mas nuevo 
+const collator = new Intl.Collator(undefined, { sensitivty: 'base' })
+
+  users.sort ((a,b) => {
+    return collator.compare(b.fullname, a.fullname)
+    //#Metodo 1
+    // if(a.fullname.toLocaleLowerCase() < b.fullname.toLocaleLowerCase()){
+    //   return 1;
+    // }
+    // if(a.fullname.toLocaleLowerCase() > b.fullname.toLocaleLowerCase()){
+    //   return -1;
+    // }
+    //   return 0;
+  })
+  
+  renderUsers(users);
 }
