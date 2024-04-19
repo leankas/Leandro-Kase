@@ -76,6 +76,14 @@ console.dir(tableBodyHTML)
 
 users.forEach((user) => {
 
-    tableHTML.innerHTML += `<div class="bg-dark text-white">${user.fullname}</div>`
+    tableBodyHTML.innerHTML += `<tr>
+                              <td class="user-image">
+                              <img src="${user.image}" alt="${user.fullname} avatar">
+                              </td>
+                              <td class="user-name">${user.fullname}</td>
+                              <td class="user-email">${user.email}</td>
+                              <td class="user-location">${user.localidad}</td>
+                              <td class="user-actions"></td>
+                              </tr>`
 
 })
